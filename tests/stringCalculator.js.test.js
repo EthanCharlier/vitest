@@ -41,4 +41,9 @@ describe('test of function add', () => {
     it('returns Negatives not allowed: -1 for "//,\\n6,-1,3,6,-7" string', () => {
       expect(() => add('//,\n6,-1,3,6,-7')).toThrow('Negatives not allowed: -1,-7');
     })
+
+    // 7
+    it('returns 3 for "1\\n2,1002" string', () => {
+      expect(add('1\n2,1002')).toBe(3)
+    })
 })

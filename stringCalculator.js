@@ -22,7 +22,7 @@ export function add(numbers) {
         if (number < 0) {
             negatives.push(number);
         } else {
-            sum += number
+            if (number <= 1000) sum += number;
         }
     }
 
