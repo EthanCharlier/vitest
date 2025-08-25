@@ -34,7 +34,7 @@ export function add(numbers) {
     }
 
     if (negatives.length) {
-      throw new Error(`Negatives not allowed: ${negatives.join(',')}`);
+      throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);
     }
 
     return sum;
