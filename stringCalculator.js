@@ -15,10 +15,20 @@ export function add(numbers) {
     }
 
     let sum = 0;
+    let negatives = [];
     for (const token of numbers.split(delimiters)){
-        console.log(token)
         const number = Number(token.trim())
-        if (Number.isInteger(number)) sum += number;
+        if (!Number.isInteger(number)) continue;
+        if (number < 0) {
+            negatives.push(number);
+        } else {
+            sum += number
+        }
     }
+
+    if (negatives.length) {
+      throw new Error(`Negatives not allowed: ${negatives.join(',')}`);
+    }
+
     return sum;
 }

@@ -2,6 +2,8 @@ import { expect, it, describe } from 'vitest'
 import { add } from '../stringCalculator'
 
 describe('test of function add', () => {
+
+    // 1
     it('returns 0 for empty string', () => {
       expect(add('')).toBe(0)
     })
@@ -12,10 +14,12 @@ describe('test of function add', () => {
       expect(add('1,2')).toBe(3)
     })
 
+    // 2
     it('returns 12 for "1,2,3,6" string', () => {
       expect(add('1,2,3,6')).toBe(12)
     })
 
+    // 3
     it('returns 6 for "1\\n2,3" string', () => {
       expect(add('1\n2,3')).toBe(6)
     })
@@ -23,7 +27,18 @@ describe('test of function add', () => {
       expect(add('1,\n')).toBe(1)
     })
 
+    // 4
     it('returns 1 for "//;\\n1;2" string', () => {
       expect(add('//;\n1;2')).toBe(3)
+    })
+
+    // 5
+    it('returns Negatives not allowed: -1 for "//,\\n6,-1" string', () => {
+      expect(() => add('//,\n6,-1')).toThrow('Negatives not allowed: -1');
+    })
+
+    // 6
+    it('returns Negatives not allowed: -1 for "//,\\n6,-1,3,6,-7" string', () => {
+      expect(() => add('//,\n6,-1,3,6,-7')).toThrow('Negatives not allowed: -1,-7');
     })
 })
