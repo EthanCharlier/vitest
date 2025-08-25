@@ -16,10 +16,14 @@ describe('test of function add', () => {
       expect(add('1,2,3,6')).toBe(12)
     })
 
-    it('returns 6 for "1\n2,3" string', () => {
+    it('returns 6 for "1\\n2,3" string', () => {
       expect(add('1\n2,3')).toBe(6)
     })
-    it('returns 1 for "1,\n" string', () => {
+    it('returns 1 for "1,\\n" string', () => {
       expect(add('1,\n')).toBe(1)
+    })
+
+    it('returns 1 for "//;\\n1;2" string', () => {
+      expect(add('//;\n1;2')).toBe(3)
     })
 })
