@@ -46,4 +46,14 @@ describe('test of function add', () => {
     it('returns 3 for "1\\n2,1002" string', () => {
       expect(add('1\n2,1002')).toBe(3)
     })
+
+    // 8
+    it('returns 6 for "//[***]\\n1***2***3" string', () => {
+      expect(add('//[***]\n1***2***3')).toBe(6)
+    })
+
+    // 9
+    it('returns 6 for "//[*][%]\\n1*2%3" string', () => {
+      expect(add('//[*][%]\n1*2%3')).toBe(6)
+    })
 })

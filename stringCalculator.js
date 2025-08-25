@@ -6,11 +6,18 @@ export function add(numbers) {
 
     if (numbers.startsWith('//')) {
         const i = numbers.indexOf('\n');
-        const d = numbers.slice(2, i);
+        const header = numbers.slice(2, i);
 
-        if (d.includes('[') || d.includes(']')) throw new Error('[] not allowed as delimiters');
+        let delims;
+        if (header.startsWith('[')) {
+          const m = [...header.matchAll(/\[([^\]]+)\]/g)];
+          delims = m.map(x => x[1]);
+        } else {
+          delims = [header];
+        }
 
-        delimiters = new RegExp(d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        const escapeRegex = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        delimiters = new RegExp(delims.map(escapeRegex).join('|'));
         numbers = numbers.slice(i + 1);
     }
 
