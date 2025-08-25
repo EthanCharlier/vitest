@@ -3,7 +3,8 @@ export function add(numbers) {
     if (!numbers.trim()) return 0;
 
     let sum = 0;
-    for (const token of numbers.split(',')){
+    for (const token of numbers.split(/,|\r?\n|\\n/)){
+        console.log(token)
         const number = Number(token.trim())
         if (Number.isInteger(number)) sum += number;
     }
